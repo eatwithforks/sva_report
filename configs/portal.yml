@@ -1,0 +1,4 @@
+key_id:
+secret_key:
+api_hostname : https://api.cloudpassage.com
+cve_url: https://cve.mitre.org/cgi-bin/cvename.cgi?name=
