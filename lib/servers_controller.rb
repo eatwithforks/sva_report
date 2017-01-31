@@ -23,8 +23,21 @@ class ServersController < ApiController
     data
   end
 
+  def build_ec2_data
+    servers = index['servers']
+    servers.each do |e|
+      next if e.key? 'aws_ec2'
+      ec2_data = e['server_label'].match(/(^\d+)_(i.+)/) unless e['server_label'].nil?
+      if ec2_data
+        e['aws_ec2'] = { 'ec2_account_id' => ec2_data[1], 'ec2_instance_id' => ec2_data[2] }
+      end
+    end
+
+    servers
+  end
+
   def ec2_servers(account_id)
-    servers = index['servers'].select! { |srv| srv.key? 'aws_ec2' }
+    servers = build_ec2_data.select! { |srv| srv.key? 'aws_ec2' }
     servers.select! { |srv| srv['aws_ec2']['ec2_account_id'].eql? account_id.to_s }
   end
 end
