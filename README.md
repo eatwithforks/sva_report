@@ -8,11 +8,7 @@ This Ruby script checks an Amazon Web Services (AWS) account for servers sva vul
 
 ## Requirements and Dependencies
 
-* Linux Agent version must be >= 3.9.5
-
-* Windows Agent version must be >= 3.9.7 
-
-* The Ruby interpreter must be installed on the machine that executes the script.
+* The Ruby interpreter >= 2.2.2 must be installed on the machine that executes the script.
 
 ## Usage
 
